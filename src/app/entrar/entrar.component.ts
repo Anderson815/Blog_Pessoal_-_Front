@@ -1,7 +1,5 @@
 import { environment } from 'src/environments/environment.prod';
-import { environment } from './../../environments/environment.prod';
 import { AuthService } from './../service/auth.service';
-import { UserLogin } from './../model/UserLogin';
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../model/UserLogin';
 import { Router } from '@angular/router';
