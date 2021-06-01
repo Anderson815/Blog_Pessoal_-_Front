@@ -5,3 +5,8 @@
 .fs-18{
   font-size: 18pt;
 }
+
+ul{
+  display: inline;
+  list-style: none;
+}
