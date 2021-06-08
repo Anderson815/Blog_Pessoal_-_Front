@@ -25,6 +25,12 @@
           <option value="{{item.id}}" *ngFor='let item of listaTema'>{{item.descricao}}</option>
         </select>
       </div>
+
+      <div class="d-flex justify-content-center">
+        <button routerLink='/inicio' class="btn btn-danger mr-4">Cancelar</button>
+        <button (click)='atualizar()' class="btn btn-success">Atualizar</button>
+      </div>
+
     </div>
 
   </div>
