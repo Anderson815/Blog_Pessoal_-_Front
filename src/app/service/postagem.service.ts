@@ -25,4 +25,10 @@ export class PostagemService {
     return this.http.get<Postagem>(`${environment.server}/postagens/${id}`, this.token)
   }
 
+  postPostagem(postagem: Postagem): Observable<Postagem>{
+    return this.http.post<Postagem>(`${environment.server}/postagens`, postagem, this.token)
+  }
+
+  
+
 }
