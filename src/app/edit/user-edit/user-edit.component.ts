@@ -28,4 +28,16 @@ export class UserEditComponent implements OnInit {
     }
   }
 
+  confirmSenha(event: any){
+
+  }
+
+  tipoUser(event: any){
+
+  }
+
+  atualizar(){
+    
+  }
+
 }
