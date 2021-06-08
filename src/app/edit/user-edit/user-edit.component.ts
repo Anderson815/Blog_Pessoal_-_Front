@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserEditComponent implements OnInit {
 
   user: User = new User();
+  idUser: number;
 
   constructor(
     private authService: AuthService,
@@ -26,6 +27,9 @@ export class UserEditComponent implements OnInit {
       alert("Sua sessão expirou, faça o login novamente");
       this.router.navigate(['/entrar']);
     }
+
+    this.idUser = this.route.snapshot.params['id'];
+    this.findByIdUser(this.idUser);
   }
 
   confirmSenha(event: any){
@@ -37,7 +41,13 @@ export class UserEditComponent implements OnInit {
   }
 
   atualizar(){
-    
+
+  }
+
+  findByIdUser(id: number){
+    this.authService.getByIdUser(id).subscribe((resp: User) => {
+      this.user = resp;
+    })
   }
 
 }
