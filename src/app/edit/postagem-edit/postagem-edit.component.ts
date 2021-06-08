@@ -1,8 +1,10 @@
+import { TemaService } from './../../service/tema.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 import { Postagem } from 'src/app/model/Postagem';
 import { PostagemService } from 'src/app/service/postagem.service';
+import { Tema } from 'src/app/model/Tema';
 
 @Component({
   selector: 'app-postagem-edit',
@@ -13,8 +15,13 @@ export class PostagemEditComponent implements OnInit {
 
   postagem: Postagem = new Postagem();
 
+  tema: Tema = new Tema();
+  listaTema: Tema[];
+  idTema: number;
+
   constructor(
     private postagemService: PostagemService,
+    private TemaService: TemaService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -26,7 +33,9 @@ export class PostagemEditComponent implements OnInit {
     }
 
     let id = this.route.snapshot.params['id'];
-    this.findByIdPostagem(id)
+    this.findByIdPostagem(id);
+
+    this.findAllTema();
   }
 
   findByIdPostagem(id: number){
@@ -35,6 +44,20 @@ export class PostagemEditComponent implements OnInit {
     })
   }
 
+  findByIdTema(){
+    this.TemaService.getByIdTema(this.idTema).subscribe((resp: Tema) =>{
+      this.tema = resp;
+    })
+  }
 
+  findAllTema(){
+    this.TemaService.getAllTema().subscribe((resp: Tema[]) => {
+      this.listaTema = resp;
+    })
+  }
+
+  atualizar(){
+
+  }
 
 }
