@@ -1,3 +1,4 @@
+import { AuthService } from './../service/auth.service';
 import { TemaService } from './../service/tema.service';
 import { environment } from './../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +28,8 @@ export class InicioComponent implements OnInit {
   constructor(
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(){
@@ -55,6 +57,13 @@ export class InicioComponent implements OnInit {
   getAllPostagem(){
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagem = resp;
+    })
+  }
+
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      this.user = resp;
+      
     })
   }
 
