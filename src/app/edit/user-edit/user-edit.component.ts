@@ -1,4 +1,8 @@
+import { environment } from './../../../environments/environment.prod';
+import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/model/User';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserEditComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
 
-  ngOnInit(): void {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(){
+    window.scroll(0, 0)
+
+    if(environment.token == ''){
+      alert("Sua sessão expirou, faça o login novamente");
+      this.router.navigate(['/entrar']);
+    }
   }
 
 }
