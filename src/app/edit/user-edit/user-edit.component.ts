@@ -13,6 +13,8 @@ export class UserEditComponent implements OnInit {
 
   user: User = new User();
   idUser: number;
+  confirmarSenha: string;
+  tipoUsuario: string;
 
   constructor(
     private authService: AuthService,
@@ -33,15 +35,32 @@ export class UserEditComponent implements OnInit {
   }
 
   confirmSenha(event: any){
-
+    this.confirmarSenha = event.target.value;
   }
 
   tipoUser(event: any){
-
+    this.tipoUsuario = event.target.value;
   }
 
   atualizar(){
+    this.user.tipo = this.tipoUsuario;
 
+    if(this.user.senha != this.confirmarSenha){
+      alert('As senhas estão incorretas.')
+    }else{
+      console.log(this.user)
+      this.authService.atualizar(this.user).subscribe((resp: User) => {
+        this.user = resp
+        alert('Usuário atualizado com sucesso, faça o login novamente.')
+
+        environment.token = '';
+        environment.nome = '';
+        environment.id = 0;
+        environment.foto = '';
+
+        this.router.navigate(['/entrar'])
+      })
+    }
   }
 
   findByIdUser(id: number){
