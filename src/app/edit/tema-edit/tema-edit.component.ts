@@ -3,6 +3,7 @@ import { TemaService } from './../../service/tema.service';
 import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
 import { Tema } from 'src/app/model/Tema';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-tema-edit',
@@ -16,15 +17,16 @@ export class TemaEditComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(){
-    
+
     window.scroll(0, 0);
 
     if(environment.token == ''){
-      alert("Sua sessão expirou, faça o login novamente");
+      this.alertas.showAlertDanger("Sua sessão expirou, faça o login novamente");
       this.router.navigate(['/entrar']);
     }
 
@@ -40,7 +42,7 @@ export class TemaEditComponent implements OnInit {
 
   atualizar(){
     this.temaService.putTema(this.tema).subscribe((resp: Tema) => {
-      alert("Tema atualizado com sucesso!")
+      this.alertas.showAlertSuccess("Tema atualizado com sucesso!")
       this.router.navigate(['/tema'])
     })
   }
