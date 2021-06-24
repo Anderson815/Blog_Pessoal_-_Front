@@ -23,6 +23,7 @@ export class InicioComponent implements OnInit {
   tema: Tema = new Tema();
   listaTema: Tema[];
   idTema: number;
+  nomeTema: string;
 
   user: User = new User();
   idUser: number = environment.id;
@@ -101,6 +102,16 @@ export class InicioComponent implements OnInit {
     }else{
       this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[]) => {
         this.listaPostagem = resp
+      })
+    }
+  }
+
+  findByNomeTema(){
+    if(this.nomeTema == ''){
+      this.getAllTemas()
+    }else{
+      this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
+        this.listaTema = resp
       })
     }
   }
