@@ -43,12 +43,18 @@
 
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
 
+      <div class="row d-flex justify-content-center my-5">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Digite um título de postagem para pesquisar" [(ngModel)]="tituloPost" (keyup)='findByTituloPostagem()'>
+          </div>
+        </div>
+      </div>
+
       <div class="card-columns">
         <div class="card text-center" *ngFor='let item of listaPostagem | orderBy : key : reverse'>
           <div class="card-body">
             <h5 class="card-title m-0">{{item.titulo}}</h5>
-<!--             Apagar os cadastros de usauários que não possuem nem usuário nem/ou nem tema -->
-
             <small class="text-muted">Tema: {{item.tema.descricao}}</small>
 
             <p class="card-text mt-3">{{item.texto}}</p>
@@ -82,11 +88,6 @@
 
             <a class="text-info mr-3" [routerLink]="['/postagem-edit', item.id]">Editar</a>
             <a class="text-danger" [routerLink]="['/postagem-delete', item.id]">Apagar</a>
-
-<!--
-            <a class="text-danger" (click)="findByIdPostagem(item.id)", item.id]">Apagar</a>
- -->
-
 
           </div>
         </div>
