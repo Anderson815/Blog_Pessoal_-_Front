@@ -116,4 +116,14 @@ export class InicioComponent implements OnInit {
     }
   }
 
+  adm(): boolean{
+    let adm = false;
+
+    if(environment.tipo == 'adm'){
+      adm = true;
+    }
+
+    return adm
+  }
+
 }

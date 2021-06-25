@@ -1,5 +1,5 @@
-import { TemaService } from './../service/tema.service';
 import { environment } from './../../environments/environment.prod';
+import { TemaService } from './../service/tema.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tema } from '../model/Tema';
