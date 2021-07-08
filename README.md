@@ -39,7 +39,7 @@
 <h3>Tema</h3>
 
   - [x] Criar tema
-  - [x] Consultar todas os temas
+  - [x] Consultar todos os temas
   - [x] Consultar tema por nome parecido
   - [x] Alterar cadastro de tema
   - [x] Deletar cadastro de tema
@@ -55,7 +55,7 @@
 
 <h2 id="Executar">🚀 Como executar o projeto</h2>
 <p>Para acessar o projeto clique <a href="https://blog-pessoal-anderson.netlify.app/#/entrar">aqui</a>. OBS: a API, que está sendo consumida, está no Heroku, então, pode ser que demore um pouco a primeira requisição.</p>
-<p>Esse projeto consumiu essa <a href="https://github.com/Anderson815/Blog_Pessoal_-_API_REST">API - REST</a> também criada pelo Anderson</p>
+<p>Esse projeto consumiu essa <a href="https://github.com/Anderson815/Blog_Pessoal_-_API_REST">API - REST</a> também criada pelo Anderson.</p>
 
 
 <h2 id="Tecnologias">🛠 Tecnologias</h2>
